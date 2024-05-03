@@ -1,0 +1,5 @@
+.aws
+terraform/.terraform
+terraform/.terraform.lock.hcl
+.git
+
