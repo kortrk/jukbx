@@ -1,0 +1,23 @@
+.underlined {
+  position: relative;
+  margin-right: 1rem;
+}
+
+.underlined:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  height: 7px;
+  width: 100%;
+  border: solid 2px black;
+  border-color: black transparent transparent transparent;
+  border-radius: 50%;
+}
+
+.display-window {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 80px;
+}
