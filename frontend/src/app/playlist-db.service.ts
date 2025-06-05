@@ -6,9 +6,6 @@ import { isEqual, max, sampleSize } from 'lodash';
   providedIn: 'root'
 })
 export class PlaylistDbService {
-  current_video_num = -1
-  video_count = 0
-
   constructor(){
     var initial_videos: VideoFields[] = [
       {
@@ -25,19 +22,24 @@ export class PlaylistDbService {
       }
     ]
     localStorage.setItem('playlist', JSON.stringify(initial_videos));
-    this.video_count = 2
+    localStorage.setItem('current_video_num', '-1');
   }
 
   getNextVideo(){
-    var next_video_num = this.current_video_num + 1;
-    console.log(`next_video_num = ${next_video_num}, current_video_num = ${this.current_video_num}`)
-    if (next_video_num > this.video_count){
+    var current_video_num = localStorage.getItem('current_video_num');
+    var next_video_num = 0;
+    if (current_video_num){
+      // should ALWAYS reach this line
+      next_video_num = parseInt(current_video_num) + 1;
+    }
+
+    var playlist = this.getPlaylist();
+
+    if (next_video_num >= playlist.length){ // loop
       next_video_num = 0
     }
-    console.log(next_video_num)
-    var playlist = this.getPlaylist();
-    console.log(playlist)
-    this.current_video_num = next_video_num;
+
+    localStorage.setItem('current_video_num', next_video_num.toString());
     return playlist[next_video_num];
   }
 
