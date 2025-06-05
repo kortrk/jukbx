@@ -1,0 +1,20 @@
+<div class="image">
+  <a href={{video.link()}} target="_blank">
+    <img height=200 src="{{video.image_link()}}">
+  </a>
+</div>
+
+<div class="content">
+  <div class="header">{{video.title}}</div>
+  <div class="meta">
+    <p>Channel: {{video.channel}}</p>  
+  </div>
+  <div class="description">
+    {{video.description}}
+  </div>
+  <div class="extra">
+    <button [routerLink]="['/add', {id: video.video_id}]" class="ui tiny button">
+      Add to Playlist
+    </button>
+  </div>
+</div>
