@@ -1,5 +1,6 @@
-import { Component, NgZone, ViewChild } from '@angular/core';
+import { Component, inject, NgZone, ViewChild } from '@angular/core';
 import { YouTubePlayer } from '@angular/youtube-player';
+import { PlaylistDbService } from '../playlist-db.service';
 
 @Component({
   selector: 'player',
@@ -15,9 +16,15 @@ export class PlayerComponent {
     autoplay: 1 // autoplay isn't guaranteed due to mute
   }
 
-  videoId = "JImcvtJzIK8";
-  videoId2 = "uE-1RPDqJAY";
+  videoId = "UxHahSb1EE4";
+  isStarting = true;
   @ViewChild('player') player: YouTubePlayer | undefined;
+
+  playlistDbService: PlaylistDbService;
+
+  constructor(){
+    this.playlistDbService = inject(PlaylistDbService);
+  }
 
   ngOnInit() {
     const scriptTag = document.createElement('script');
@@ -26,9 +33,12 @@ export class PlayerComponent {
   }
 
   nextVideo(){
-    console.log("got a state change!")
-    if (this.player && this.player.getPlayerState() == YT.PlayerState.ENDED){
-      this.videoId = this.videoId2;
+    console.log(`got a state change!: ${this.player?.getPlayerState()}`)
+    var s = this.player?.getPlayerState()
+    if (s == YT.PlayerState.ENDED || this.isStarting){
+      var video = this.playlistDbService.getNextVideo();
+      this.videoId = video.video_id;
+      this.isStarting = false;
     }
   }
 

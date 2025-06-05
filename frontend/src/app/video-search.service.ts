@@ -1,7 +1,5 @@
-import { Injectable, inject } from '@angular/core';
-import { Video, VideoFields } from './video.model';
-import { isEqual, max, sampleSize } from 'lodash';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Video } from './video.model';
 import * as data from '../../public/assets/elvis.json'
 
 @Injectable({
@@ -12,8 +10,7 @@ export class VideoSearchService {
   all_videos: Video[] = [];
   videos: Video[] = [];
 
-  constructor(private http: HttpClient){
-    console.log(this.items);
+  constructor(){
     this.all_videos = this.items.map((x: any) =>
       new Video({
         title: x['snippet']['title'],
@@ -27,7 +24,6 @@ export class VideoSearchService {
 
   search(search_term: string){
     var videos = [...this.all_videos]; // clone
-    console.log(videos);
     return videos.filter((v: Video) => 
       v.title.toLowerCase().includes(search_term.toLowerCase())
     ).slice(0, 5)
