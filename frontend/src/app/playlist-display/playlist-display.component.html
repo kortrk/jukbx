@@ -1,5 +1,8 @@
-<div class="ui items">
-  @for(video of playlist; track video.video_id){
-    <playlist-display-row [video]="video"></playlist-display-row>
-  }
+<div class="ui message blue" style="overflow-y: auto; height: 300px; width:inherit;">
+  <h2>Playlist</h2>
+  <div class="ui items">
+    @for(video of playlist; track video.video_id){
+      <playlist-display-row [video]="video"></playlist-display-row>
+    }
+  </div>
 </div>

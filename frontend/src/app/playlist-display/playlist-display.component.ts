@@ -20,7 +20,7 @@ export class PlaylistDisplayComponent {
     this.playlist = [];
   
     // poll every 5 seconds
-    timer(0, 5000).pipe(
+    timer(0, 1000).pipe(
       switchMap(() => of(this.playlistDbService.getPlaylist()))
     ).subscribe((res) => {
       this.playlist = res
