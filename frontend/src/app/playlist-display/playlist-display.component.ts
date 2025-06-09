@@ -23,7 +23,23 @@ export class PlaylistDisplayComponent {
     timer(0, 1000).pipe(
       switchMap(() => of(this.playlistDbService.getPlaylist()))
     ).subscribe((res) => {
-      this.playlist = res
+      this.playlist = this.prepDisplay(res);
     });
+  }
+
+  prepDisplay(videos: Video[]): Video[]{
+    var vn = localStorage.getItem('current_video_num');
+    var current_video_num = 0
+    if (vn){
+      current_video_num = parseInt(vn);
+    }
+    var colors = ["blue", "green", "red"]
+    var current_color = 0
+    return videos.map((v, index) => {
+      current_color = (current_color + 1) % colors.length;
+      v.row_color = colors[current_color];
+      v.highlighted = (index == current_video_num);
+      return v;
+    })
   }
 }

@@ -11,6 +11,10 @@ export class Video {
     description: string;
     video_id: string;
 
+    // for display:
+    highlighted = false;
+    row_color = "blue";
+
 	constructor(videoFields: VideoFields) {
     this.title = videoFields.title;
     this.channel = videoFields.channel;
