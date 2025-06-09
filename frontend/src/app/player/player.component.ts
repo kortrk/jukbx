@@ -1,4 +1,4 @@
-import { Component, inject, NgZone, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { YouTubePlayer } from '@angular/youtube-player';
 import { PlaylistDbService } from '../playlist-db.service';
 
