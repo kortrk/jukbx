@@ -68,4 +68,11 @@ export class PlaylistDbService {
     playlist.push(video_fields);
     localStorage.setItem('playlist', JSON.stringify(playlist));
   }
+
+  setCurrentVideo(video: Video): Video {
+    var playlist = this.getPlaylist();
+    var index = playlist.findIndex((v) => v.video_id == video.video_id);
+    localStorage.setItem('current_video_num', index.toString());
+    return video;
+  }
 }

@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Video } from '../video.model';
 import { PlaylistDisplayRowComponent as PlRow } from '../playlist-display-row/playlist-display-row.component';
 import { PlaylistDbService } from '../playlist-db.service';
 import { of, switchMap, timer } from 'rxjs';
+import { PlayerComponent } from '../player/player.component';
 
 @Component({
   selector: 'playlist-display',
@@ -14,6 +15,7 @@ import { of, switchMap, timer } from 'rxjs';
 export class PlaylistDisplayComponent {
   playlistDbService: PlaylistDbService;
   playlist: Video[];
+  @Input() player: PlayerComponent | undefined;
 
   constructor(){
     this.playlistDbService = inject(PlaylistDbService);

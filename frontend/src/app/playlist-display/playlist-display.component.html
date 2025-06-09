@@ -2,7 +2,7 @@
   <h2>Playlist</h2>
   <div class="ui items">
     @for(video of playlist; track video.video_id){
-      <playlist-display-row [video]="video"></playlist-display-row>
+      <playlist-display-row [video]="video" [player]="player"></playlist-display-row>
     }
   </div>
 </div>

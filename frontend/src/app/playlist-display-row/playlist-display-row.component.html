@@ -4,6 +4,6 @@
   </div>
 } @else {
   <div class="ui {{video.row_color}} message" style="box-shadow: 0 0 10px;">
-    <div class="ui header" style="color: black">{{video.title}}</div>
+    <div class="ui header" ><a (click)="playVideo()" style="color: black">{{video.title}}</a></div>
   </div>
 }
