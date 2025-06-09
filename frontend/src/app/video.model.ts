@@ -25,4 +25,13 @@ export class Video {
   image_link(): string {
     return `https://i.ytimg.com/vi/${this.video_id}/mqdefault.jpg`
   }
+
+  getFields(): VideoFields {
+    return {
+      title: this.title,
+      channel: this.channel,
+      description: this.description,
+      video_id: this.video_id
+    }
+  }
 }

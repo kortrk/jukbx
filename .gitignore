@@ -132,3 +132,4 @@ dist
 # MY ADDITIONS
 .git
 frontend/curl_workspace
+.DS_Store

@@ -43,15 +43,29 @@ export class PlaylistDbService {
     return playlist[next_video_num];
   }
 
-  getPlaylist(): Video[]{
+  getPlaylistFields(): VideoFields[]{
     var retrievedPlaylist = localStorage.getItem('playlist');
     if (retrievedPlaylist){
         return JSON.parse(retrievedPlaylist).map((x: Object) =>
-          new Video(x as VideoFields)
-          // have to call `new` for Book to init with its methods
+          x as VideoFields
         );
     } else {
       return []
     }
+  }
+
+  getPlaylist(): Video[]{
+    var playlistFields = this.getPlaylistFields();
+    return playlistFields.map((x: VideoFields) =>
+      new Video(x)
+      // have to call `new` for Book to init with its methods
+    );
+  }
+
+  addVideoToPlaylist(video: Video){
+    var video_fields = video.getFields();
+    var playlist = this.getPlaylistFields();
+    playlist.push(video_fields);
+    localStorage.setItem('playlist', JSON.stringify(playlist));
   }
 }

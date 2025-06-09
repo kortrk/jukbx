@@ -13,7 +13,7 @@
     {{video.description}}
   </div>
   <div class="extra">
-    <button [routerLink]="['/add', {id: video.video_id}]" class="ui tiny button">
+    <button (click)="addToPlaylist()" class="ui tiny button">
       Add to Playlist
     </button>
   </div>

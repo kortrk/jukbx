@@ -33,7 +33,6 @@ export class PlayerComponent {
   }
 
   nextVideo(){
-    console.log(`got a state change!: ${this.player?.getPlayerState()}`)
     var s = this.player?.getPlayerState()
     if (s == YT.PlayerState.ENDED || this.isStarting){
       var video = this.playlistDbService.getNextVideo();
