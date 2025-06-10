@@ -1,9 +1,10 @@
 <div class="ui action input" style="display:table;">
   <input type="text" style="width:25em;" placeholder="Search YouTube..." id="searchbar" (keyup.enter)="search()" [(ngModel)]="titleSearch">
-  <button class="ui green button" (click)="search()">Go</button>
+  <button class="ui purple button" (click)="search()">Go</button>
+  <button class="ui button" (click)="clearSearch()">Clear Search</button>
 </div>
 
-<button class="ui button" (click)="clearSearch()">Clear Search</button>
+
 
 <div class="ui items">
   @for(video of videos; track video.video_id){

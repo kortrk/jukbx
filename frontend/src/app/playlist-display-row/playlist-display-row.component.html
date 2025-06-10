@@ -1,9 +1,9 @@
 @if (video.highlighted){
-  <div class="ui {{video.row_color}} message" style="border: 10px solid black;">
-    <div class="ui header" style="color: black">{{video.title}}</div>
+  <div class="ui message" style="box-shadow: 0 0 10px blueviolet; background-color: white;">
+    <div class="ui header" style="color:rgb(56, 48, 68)">{{video.title}}</div>
   </div>
 } @else {
-  <div class="ui {{video.row_color}} message" style="box-shadow: 0 0 10px;">
-    <div class="ui header" ><a (click)="playVideo()" style="color: black">{{video.title}}</a></div>
+  <div class="ui message" style="background-color: white;">
+    <div class="ui header"><a (click)="playVideo()" style="color:rgb(56, 48, 68)">{{video.title}}</a></div>
   </div>
 }

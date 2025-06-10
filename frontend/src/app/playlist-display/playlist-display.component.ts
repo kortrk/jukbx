@@ -35,7 +35,7 @@ export class PlaylistDisplayComponent {
     if (vn){
       current_video_num = parseInt(vn);
     }
-    var colors = ["blue", "green", "red"]
+    var colors = ["white"]
     var current_color = 0
     return videos.map((v, index) => {
       current_color = (current_color + 1) % colors.length;
